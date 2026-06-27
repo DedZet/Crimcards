@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CrimsonFlashcards"
+             x:Class="CrimsonFlashcards.AddCardsPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto, *, Auto, Auto" Padding="20" RowSpacing="15">
+        <Grid Grid.Row="0" ColumnDefinitions="Auto, *">
+            <Button x:Name="BackButton" 
+                    Text="←" 
+                    BackgroundColor="Transparent" 
+                    TextColor="White" 
+                    FontSize="24" 
+                    HorizontalOptions="Start"
+                    Clicked="OnBackClicked"/>
+            <Label Grid.Column="1" 
+                   Text="{Binding DeckTitle}" 
+                   FontSize="22" 
+                   FontAttributes="Bold" 
+                   TextColor="{StaticResource CrimsonAccent}" 
+                   HorizontalOptions="Center"/>
+        </Grid>
+
+        <CollectionView Grid.Row="1"
+                        x:Name="CardsCollection"
+                        ItemsSource="{Binding Cards}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="*, *, Auto" ColumnSpacing="10" Margin="0,5">
+                        <Entry Grid.Column="0"
+                               Placeholder="{Binding FacePlaceholder}"
+                               Text="{Binding Face}"
+                               BackgroundColor="{StaticResource SurfaceDark}"
+                               TextColor="White"
+                               PlaceholderColor="{StaticResource TextSecondary}" />
+                        <Entry Grid.Column="1"
+                               Placeholder="{Binding BackPlaceholder}"
+                               Text="{Binding Back}"
+                               BackgroundColor="{StaticResource SurfaceDark}"
+                               TextColor="White"
+                               PlaceholderColor="{StaticResource TextSecondary}" />
+                        <Button Grid.Column="2"
+                                Text="✖️"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:AddCardsPage}}, Path=RemoveCommand}"
+                                CommandParameter="{Binding .}"
+                                BackgroundColor="Transparent"
+                                TextColor="Red"
+                                FontSize="18" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="2"
+                Text="Добавить карточку"
+                Command="{Binding AddCommand}"
+                BackgroundColor="{StaticResource SurfaceDark}"
+                TextColor="White"
+                CornerRadius="12"
+                FontSize="16"
+                Padding="10" />
+
+        <Button Grid.Row="3"
+                Text="Сохранить колоду"
+                Command="{Binding SaveCommand}"
+                BackgroundColor="{StaticResource CrimsonAccent}"
+                TextColor="White"
+                CornerRadius="12"
+                FontSize="16"
+                Padding="10" />
+    </Grid>
+</ContentPage>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CrimsonFlashcards.DeckPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto, *" Padding="20" RowSpacing="20">
+        <Grid Grid.Row="0" ColumnDefinitions="Auto, *">
+            <Button x:Name="BackButton"
+                    ImageSource="cross.png"
+                    HorizontalOptions="Start"
+                    Clicked="OnBackClicked"/>
+        </Grid>
+
+        <Grid Grid.Row="1" ColumnDefinitions="*, *" RowSpacing="20">
+            <VerticalStackLayout Grid.Column="0" Spacing="15" VerticalOptions="Center">
+                <Label Text="{Binding Theme}" FontSize="32" FontAttributes="Bold" TextColor="{StaticResource CrimsonAccent}" />
+                <Label Text="{Binding Description}" FontSize="18" TextColor="{StaticResource TextSecondary}" />
+                <Label FontSize="16">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Лицевая: " TextColor="{StaticResource TextSecondary}" />
+                            <Span Text="{Binding FaceLang}" TextColor="White" />
+                            <Span Text="    Обратная: " TextColor="{StaticResource TextSecondary}" />
+                            <Span Text="{Binding BackLang}" TextColor="White" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label FontSize="16">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Карточек: " TextColor="{StaticResource TextSecondary}" />
+                            <Span Text="{Binding Cards.Count}" TextColor="White" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="1" Spacing="15" VerticalOptions="Center">
+                <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
+                    <Label Text="Начать с обратной?" TextColor="White" VerticalOptions="Center"/>
+                    <Switch x:Name="StartWithBackSwitch" />
+                </StackLayout>
+
+                <Button Text="Начать тестирование" 
+                        BackgroundColor="{StaticResource CrimsonAccent}" 
+                        TextColor="White" 
+                        CornerRadius="12" 
+                        FontSize="16" 
+                        Padding="10"
+                        Clicked="OnStartTestClicked" />
+
+                <Button Text="Редактировать" 
+                        BackgroundColor="{StaticResource SurfaceDark}" 
+                        TextColor="White" 
+                        CornerRadius="12" 
+                        FontSize="16" 
+                        Padding="10"
+                        Clicked="OnEditClicked" />
+
+                <Button Text="Экспорт в CSV"
+                        BackgroundColor="{StaticResource SurfaceDark}" 
+                        TextColor="White"
+                        CornerRadius="12"
+                        FontSize="16" 
+                        Padding="10"
+                        Clicked="OnExportCsvClicked" />
+
+                <Button Text="Удалить"
+                        BackgroundColor="{StaticResource SurfaceDark}" 
+                        TextColor="White" 
+                        CornerRadius="12" 
+                        FontSize="16" 
+                        Padding="10"
+                        Clicked="OnDeleteClicked" />
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

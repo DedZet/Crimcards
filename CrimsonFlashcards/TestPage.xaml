@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CrimsonFlashcards.TestPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="*, Auto" Padding="20">
+        <Border x:Name="CardBorder"
+                Grid.Row="0"
+                BackgroundColor="{StaticResource SurfaceDark}"
+                StrokeThickness="3"
+                Stroke="#FF6B6B"
+                Padding="20"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                WidthRequest="350"
+                HeightRequest="250">
+            <Grid x:Name="CardGrid">
+                <ContentView x:Name="FrontView" IsVisible="True">
+                    <Label x:Name="FrontLabel"
+                           Text="Front"
+                           FontSize="24"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </ContentView>
+                <ContentView x:Name="BackView" IsVisible="False">
+                    <Label x:Name="BackLabel"
+                           Text="Back"
+                           FontSize="24"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </ContentView>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1" ColumnDefinitions="*, *" ColumnSpacing="20" Margin="0,20,0,0">
+            <Button Grid.Column="0"
+                    Text="Не знаю"
+                    BackgroundColor="#FF4444"
+                    TextColor="White"
+                    CornerRadius="10"
+                    FontSize="18"
+                    Clicked="OnDontKnowClicked"/>
+            <Button Grid.Column="1"
+                    Text="Знаю"
+                    BackgroundColor="#44BB44"
+                    TextColor="White"
+                    CornerRadius="10"
+                    FontSize="18"
+                    Clicked="OnKnowClicked"/>
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CrimsonFlashcards.MainPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid ColumnDefinitions="Auto, *">
+        <Grid x:Name="SidebarGrid"
+      BackgroundColor="{StaticResource SidebarBackground}"
+      IsVisible="True"
+      WidthRequest="220">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Text="Crimcards"
+           Grid.Row="0"
+           FontSize="25"
+           FontAttributes="Bold"
+           TextColor="{StaticResource CrimsonAccent}"
+           HorizontalOptions="Center"
+           Margin="0,20,0,20"/>
+
+            <VerticalStackLayout Grid.Row="1" Padding="20,0" Spacing="15">
+                
+                <Button x:Name="HomeButton"
+                Text="Главная страница"
+                FontSize="14"
+                Style="{StaticResource SidebarButtonStyle}"
+                Clicked="OnHomeClicked"/>
+
+                <Button x:Name="StatisticsButton"
+                Text="Статистика"
+                FontSize="14"
+                Style="{StaticResource SidebarButtonStyle}"
+                Clicked="OnStatisticsClicked"/>
+
+                <Button x:Name="CreateDeckButton"
+                Text="Создание колоды"
+                FontSize="14"
+                Style="{StaticResource SidebarButtonStyle}"
+                Clicked="OnCreateDeckClicked"/>
+
+                <Button x:Name="ImportDeckButton"
+                Text="Импортировать колоду"
+                FontSize="14"
+                Style="{StaticResource SidebarButtonStyle}"
+                Clicked="OnImportDeckClicked"/>
+                
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="2" Padding="20,0,20,20" Spacing="14">
+
+                <Button x:Name="OpenFolderButton"
+                Text="Открыть папку сохранений"
+                FontSize="12"
+                Style="{StaticResource SidebarButtonStyle}"
+                Clicked="OnOpenFolderClicked"/>
+
+            </VerticalStackLayout>
+            
+        </Grid>
+
+        <Grid Grid.Column="1">
+    <ContentView x:Name="ContentArea"
+                 BackgroundColor="{StaticResource ContentBackground}"
+                 Padding="20"/>
+
+        </Grid>
+    </Grid>
+</ContentPage>
+    
+    
